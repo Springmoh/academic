@@ -3,15 +3,14 @@
 
 uint32_t raw;
 float voltage;
-double digit1, digit2;
+double integer, floating_n;
 
 void gpio_config() {
 	RCC->AHB1ENR |= 3;		// Enable GPIOA clock
-	GPIOA->MODER &= ~(0b11111111111111111111111111111111);
-	GPIOA->MODER |= (0b01010101010101010101010101010111);
-	GPIOB->MODER &= ~(0xFFFFFFFF);
-	GPIOB->MODER |= 0x55555555;
-
+	GPIOA->MODER &= ~(0b11111111111111111111111111111111); //clear all bits in register
+	GPIOA->MODER |= (0b01010101010101010101010101010111); //set the pins to output mode
+	GPIOB->MODER &= ~(0xFFFFFFFF); //clear all bits Port B
+	GPIOB->MODER |= 0x55555555; //set the pins to output mode
 }
 
 int main() {
@@ -37,12 +36,12 @@ int main() {
 
 		voltage = (((float) raw / 4095.0) * 5.0 / 10.0 * 30.0) + 0.01;
 		voltage = voltage > 10.0 ? 10.0 : voltage;
-		digit2 = modf(voltage, &digit1);
+		floating_n = modf(voltage, &integer);
 
-		switch ((int) digit1) {
+		switch ((int) integer) {
 		case 0:
-			GPIOA->ODR |= (0b0111111 << 1);
-			GPIOA->ODR &= ~(0b1000000 << 1);
+			GPIOA->ODR |= (0b0111111 << 1); //SET BIT HIGH
+			GPIOA->ODR &= ~(0b1000000 << 1); //CLEAR THE OTHER BITS
 			break;
 		case 1:
 			GPIOA->ODR |= (0b0000110 << 1);
@@ -88,7 +87,7 @@ int main() {
 			break;
 		}
 
-		switch ((int)(digit2*10.0)) {
+		switch ((int)(floating_n*10.0)) {
 		case 0:
 			GPIOA->ODR |= (0b00111111 << 8);
 			GPIOA->ODR &= ~(0b11000000 << 8);
@@ -134,7 +133,7 @@ int main() {
 			break;
 		}
 
-		if ((int) digit1 >= 10) {
+		if ((int) integer >= 10) {
 			GPIOB->ODR |= (0b0000110 << 1);
 			GPIOB->ODR &= ~(0b1111001 << 1);
 		} else {

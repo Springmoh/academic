@@ -62,8 +62,8 @@ all: main-build
 main-build: microP_register.elf secondary-outputs
 
 # Tool invocations
-microP_register.elf microP_register.map: $(OBJS) $(USER_OBJS) /home/mohnc/Desktop/File/Kindergarten/STM32F410CBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "microP_register.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/mohnc/Desktop/File/Kindergarten/STM32F410CBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="microP_register.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+microP_register.elf microP_register.map: $(OBJS) $(USER_OBJS) /home/mohnc/Desktop/File/academic/academic/STM32F410CBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "microP_register.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/mohnc/Desktop/File/academic/academic/STM32F410CBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="microP_register.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

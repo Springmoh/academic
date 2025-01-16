@@ -893,10 +893,11 @@ LOAD /opt/st/stm32cubeide_1.16.1/plugins/com.st.stm32cube.ide.mcu.externaltools.
  .bss.voltage   0x20000020        0x4 ./Core/Src/main.o
                 0x20000020                voltage
  *fill*         0x20000024        0x4 
- .bss.digit1    0x20000028        0x8 ./Core/Src/main.o
-                0x20000028                digit1
- .bss.digit2    0x20000030        0x8 ./Core/Src/main.o
-                0x20000030                digit2
+ .bss.integer   0x20000028        0x8 ./Core/Src/main.o
+                0x20000028                integer
+ .bss.floating_n
+                0x20000030        0x8 ./Core/Src/main.o
+                0x20000030                floating_n
  .bss.tick.0    0x20000038        0x4 ./Core/Src/stm32f4xx_it.o
  *(COMMON)
                 0x2000003c                        . = ALIGN (0x4)
@@ -1032,14 +1033,14 @@ LOAD /opt/st/stm32cubeide_1.16.1/plugins/com.st.stm32cube.ide.mcu.externaltools.
  .debug_line    0x00000bd9      0x4c2 ./Core/Src/system_stm32f4xx.o
  .debug_line    0x0000109b       0x7a ./Core/Startup/startup_stm32f410cbtx.o
 
-.debug_str      0x00000000    0x45b79
- .debug_str     0x00000000    0x45946 ./Core/Src/main.o
-                              0x45b81 (size before relaxing)
- .debug_str     0x00045946       0xcc ./Core/Src/stm32f4xx_it.o
+.debug_str      0x00000000    0x45baf
+ .debug_str     0x00000000    0x45950 ./Core/Src/main.o
+                              0x45b8b (size before relaxing)
+ .debug_str     0x00045950       0xf8 ./Core/Src/stm32f4xx_it.o
                                0x3dba (size before relaxing)
- .debug_str     0x00045a12      0x123 ./Core/Src/system_stm32f4xx.o
-                              0x41f6e (size before relaxing)
- .debug_str     0x00045b35       0x44 ./Core/Startup/startup_stm32f410cbtx.o
+ .debug_str     0x00045a48      0x123 ./Core/Src/system_stm32f4xx.o
+                              0x41f73 (size before relaxing)
+ .debug_str     0x00045b6b       0x44 ./Core/Startup/startup_stm32f410cbtx.o
                                  0x70 (size before relaxing)
 
 .comment        0x00000000       0x43
