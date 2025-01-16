@@ -34,7 +34,7 @@ int main() {
 		}
 		raw = ADC1->DR;             // Read ADC value (EOC clears automatically)
 
-		voltage = (((float) raw / 4095.0) * 5.0 / 10.0 * 30.0) + 0.01;
+		voltage = (((float) raw / 4095.0) * 3.3 / 10.0 * 30.0) + 0.1;
 		voltage = voltage > 10.0 ? 10.0 : voltage;
 		floating_n = modf(voltage, &integer);
 
