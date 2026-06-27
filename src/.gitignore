@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# ROS 2 / colcon
+build/
+install/
+log/
+
+# VSCode
+.vscode/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# system
+.DS_Store

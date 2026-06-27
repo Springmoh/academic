@@ -1,0 +1,48 @@
+# Byte-compiled / cached files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env/
+.venv/
+venv/
+ENV/
+env/
+.env/*
+.venv/*
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.nox/
+.pyre/
+.pytype/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# OS/editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# Project artifacts
+saved_frames/
+image_processing/recorded_video/
+image_processing/training_frames_output_lab/
+*.log

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Robotic Arm ROS2 Coding Flowchart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.15.0/flowchart.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 24px;
+            background: #f7f7f7;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+        p {
+            margin-top: 0;
+            color: #555;
+        }
+        #diagram {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            overflow: auto;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+    </style>
+</head>
+<body>
+    <h1>Robotic Arm ROS2 Coding Flowchart</h1>
+    <p>Generated automatically from the Python pyflowchart script.</p>
+    <div id="diagram"></div>
+
+    <script>
+        const code = `st0=>start: start Start ROS2 robotic arm system
+op1=>operation: Initialize ROS2 nodes, YOLO model, camera, publishers, subscribers, QoS
+cond2=>condition: Input source?
+op3=>operation: Manual input: user adjusts x_t, y_t, z_t using slider GUI
+op4=>operation: Publish target point to ROS2 topic
+op18=>operation: Arm calculation node receives target point
+cond19=>condition: x_t > 0?
+op20=>operation: Reject target: x_t must be greater than 0
+op28=>operation: Loop while ROS2 is running
+op5=>operation: Read camera frame
+cond6=>condition: Frame captured successfully?
+e29=>end: end End / shutdown ROS2 nodes
+op7=>operation: Run YOLO tracking on frame
+cond8=>condition: Object detected with tracking ID?
+op9=>operation: No detection: publish default/home target and set z flag = 1
+op17=>operation: Publish target coordinate, cut data, object count, and display annotated frame
+op10=>operation: For each detected box: calculate center, area, confidence, and track ID
+cond11=>condition: Current target track ID found?
+cond15=>condition: Target lost longer than timeout?
+op16=>operation: Re-track target using nearest object or previous bounding region
+cond12=>condition: Target center inside tolerance area?
+op13=>operation: Publish home/center target coordinate
+op14=>operation: Publish detected target center coordinate
+op21=>operation: Calculate l, h, and phi from target x_t, y_t, z_t
+cond22=>condition: h <= 2 * arm_length?
+op23=>operation: Reject target: point is outside reachable workspace
+op24=>operation: Calculate theta, base angle a_b, elbow angle a_e, wrist angle a_w
+cond25=>condition: First run?
+op26=>operation: Save initial angle offsets as home calibration
+op27=>operation: Publish joint_angles in radians and stm32_angles in degrees
+
+st0->op1
+op1->cond2
+cond2(yes)->op3
+op3->op4
+op4->op18
+op18->cond19
+cond19(no)->op20
+op20->op28
+op28->op5
+op5->cond6
+cond6(no)->e29
+cond6(yes)->op7
+op7->cond8
+cond8(no)->op9
+op9->op17
+op17->op18
+cond8(yes)->op10
+op10->cond11
+cond11(no)->cond15
+cond15(yes)->op16
+op16->op17
+cond15(no)->op17
+cond11(yes)->cond12
+cond12(yes)->op13
+op13->cond15
+cond12(no)->op14
+op14->cond15
+cond19(yes)->op21
+op21->cond22
+cond22(no)->op23
+op23->op28
+cond22(yes)->op24
+op24->cond25
+cond25(yes)->op26
+op26->op28
+cond25(no)->op27
+op27->op28
+cond2(no)->op5
+`;
+        const diagram = flowchart.parse(code);
+        diagram.drawSVG('diagram', {
+            'line-width': 2,
+            'font-size': 14,
+            'font-family': 'Arial',
+            'element-color': '#222',
+            'line-color': '#222',
+            'yes-text': 'Yes',
+            'no-text': 'No',
+            'flowstate': {
+                'default': { 'fill': '#ffffff' }
+            }
+        });
+    </script>
+</body>
+</html>
