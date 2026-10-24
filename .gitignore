@@ -27,8 +27,11 @@ Thumbs.db
 *.log
 *.sqlite3
 
-# Local data
-debug_viewSectionDetail_response.html
+# Local data (personal info, cookies, CSRF token) - never commit
+config.json
+savedPage/*
+!savedPage/.gitkeep
+debugViewSectionDetailResponse.html
 Student Portal_files/
 Student Portal.html
 

@@ -1,0 +1,9 @@
+{
+  "htmlFile": "savedPage/courseRegistration.html",
+  "baseUrl": "https://studentportal.utm.my/courseRegistration",
+  "courseQuery": "SKEM4313",
+  "sectionChoice": "01",
+  "cookieString": "XSRF-TOKEN=PASTE_HERE; student_session=PASTE_HERE",
+  "dryRun": true,
+  "autoSubmit": false
+}
